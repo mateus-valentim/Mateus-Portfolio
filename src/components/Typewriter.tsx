@@ -5,46 +5,45 @@ import {ScrambleTextPlugin} from "gsap/ScrambleTextPlugin"
 
 gsap.registerPlugin(ScrambleTextPlugin);
 
+const frases = [
+    {
+        text: "Desenvolvedor Full-Stack",
+        textColor: "text-violet-400",
+        cursorColor: "bg-violet-400",
+        shadow: "drop-shadow-[0_0_10px_rgba(167,139,250,0.8)]"
+    },
+    {
+        text: "Graduando em Ciência da Computação",
+        textColor: "text-pink-400",
+        cursorColor: "bg-pink-400",
+        shadow: "drop-shadow-[0_0_10px_rgba(244,114,182,0.8)]"
+    },
+    {
+        text: "Desenvolvedor de Jogos",
+        textColor: "text-emerald-400",
+        cursorColor: "bg-emerald-400",
+        shadow: "drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]"
+    },
+    {
+        text: "Pesquisador de Aprendizado de Máquina",
+        textColor: "text-blue-400",
+        cursorColor: "bg-blue-400",
+        shadow: "drop-shadow-[0_0_10px_rgba(96,165,250,0.8)]"
+    }
+]
 
 export default function Typewriter() {
     const textRef = useRef<HTMLSpanElement>(null);
     const [index, setIndex] = useState(0);
-    const frases = [
-        {
-            text: "Desenvolvedor Full-Stack",
-            textColor: "text-violet-400",
-            cursorColor: "bg-violet-400",
-            shadow: "drop-shadow-[0_0_10px_rgba(167,139,250,0.8)]"
-        },
-        {
-            text: "Graduando em Ciência da Computação",
-            textColor: "text-pink-400",
-            cursorColor: "bg-pink-400",
-            shadow: "drop-shadow-[0_0_10px_rgba(244,114,182,0.8)]"
-        },
-        {
-            text: "Desenvolvedor de Jogos",
-            textColor: "text-emerald-400",
-            cursorColor: "bg-emerald-400",
-            shadow: "drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]"
-        },
-        {
-            text: "Pesquisador de Aprendizado de Máquina",
-            textColor: "text-blue-400",
-            cursorColor: "bg-blue-400",
-            shadow: "drop-shadow-[0_0_10px_rgba(96,165,250,0.8)]"
-        }
-    ]
+    const char = "<>\\\\/[]{}+*^?01"
 
     useEffect(()=> {
-
-
 
         const timeline = gsap.timeline({onComplete: function() {
                 this.play("inicioDoLoop");
             }});
 
-        const char = "<>\\\\/[]{}+*^?01"
+
 
         timeline.to(textRef.current, {
             duration: 1.5,

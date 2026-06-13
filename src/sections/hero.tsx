@@ -9,7 +9,7 @@ const Hero = () => {
     return (
         <section id="hero" className="relative overflow-hidden w-full min-h-screen flex items-start pt-[12vh] lg:pt-0 lg:items-center bg-black">
 
-            <div className="absolute inset-y-0 right-0 w-full h-full z-0">
+            <div className="absolute right-0 w-full h-full z-0">
                 <div className="absolute left-0 lg:left-1/5 top-1/5 md:top-0 inset-y-0 w-full z-10">
                     <ModelLoader />
 
