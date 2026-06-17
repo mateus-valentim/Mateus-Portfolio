@@ -18,6 +18,7 @@ export default function ModelLoader() {
 
     const [isMobile, setIsMobile] = useState(false);
 
+
     useEffect(()=>{
         const handleResize = () =>{
             setIsMobile(window.innerWidth < 768);
@@ -30,28 +31,34 @@ export default function ModelLoader() {
         return () => window.removeEventListener("resize", handleResize);
     }, [])
     return (
-        <Canvas className={`${isMobile?"pointer-events-none":"pointer-events-auto"}`} camera={{ position: [0, -8, -9], fov: 45 }} gl={{ alpha: false }}>
+        <div className="relative w-full h-full">
+            <Canvas className="pointer-events-auto" camera={{ position: [0, -8, -9], fov: 45 }} gl={{ alpha: false }}>
 
 
-            <ambientLight intensity={0.1}/>
-            <directionalLight intensity={1} position={[0, 0, 0]} />
-            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} enableRotate={!isMobile} enablePan={false} />
+                <ambientLight intensity={0.1}/>
+                <directionalLight intensity={1} position={[0, 0, 0]} />
+                <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} enableRotate={!isMobile} enablePan={false} />
 
-            <Suspense fallback={<Loader />}>
-                <ProgrammerModel/>
-            </Suspense>
+                <Suspense fallback={<Loader />}>
+                    <ProgrammerModel/>
+                </Suspense>
 
-            <EffectComposer enableNormalPass>
-                <Bloom
-                    intensity={1.5}
-                    luminanceThreshold={0.2}
-                    luminanceSmoothing={0.9}
-                    mipmapBlur
-                />
+                <EffectComposer enableNormalPass>
+                    <Bloom
+                        intensity={1.5}
+                        luminanceThreshold={0.2}
+                        luminanceSmoothing={0.9}
+                        mipmapBlur
+                    />
 
 
-            </EffectComposer>
+                </EffectComposer>
 
-        </Canvas>
+            </Canvas>
+
+            {isMobile && (
+                <div className="absolute inset-0 z-50"></div>
+            )}
+        </div>
     );
 }
