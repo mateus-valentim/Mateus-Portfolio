@@ -45,7 +45,7 @@ export default function ModelLoader() {
 
                 <EffectComposer enableNormalPass>
                     <Bloom
-                        intensity={1.5}
+                        intensity={isMobile?1:1.5}
                         luminanceThreshold={0.2}
                         luminanceSmoothing={0.9}
                         mipmapBlur
