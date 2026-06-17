@@ -43,7 +43,7 @@ export default function Navbar() {
         const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: navRef.current,
-                start: 'top -100',
+                start: 'top -50',
                 toggleActions: 'play none none reverse'
             }
         });
@@ -96,7 +96,7 @@ export default function Navbar() {
     return (
         <nav ref={navRef} className="fixed top-0 left-0 w-full z-50">
             <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:px-6 py-5 mx-auto max-w-7xl">
-                <a href="#home" className="flex items-center gap-2 font-mono justify-center sm:justify-start drop-shadow-[0_0_10px_rgba(167,139,250,0.8)] text-lg md:text-xl">
+                <a href="#" className="flex items-center gap-2 font-mono justify-center sm:justify-start drop-shadow-[0_0_10px_rgba(167,139,250,0.8)] text-lg md:text-xl">
                     <p >Mateus_Valentim</p>
                     <div className="h-2.5 w-2.5 rounded-4xl bg-violet-400 drop-shadow-[0_0_10px_rgba(167,139,250,0.8)] animate-pulse duration-500 transition-all "></div>
                 </a>
@@ -107,7 +107,7 @@ export default function Navbar() {
                         <li key={link.id} className="relative text-base md:text-lg">
                             <a href={`#${link.id}`} className="group">
                                 {link.title}
-                                <span className={`absolute ${colors[i]} h-[2px] w-full rounded-xl left-0 bottom-0 origin-left scale-x-0 group-hover:scale-x-100 transition-all duration-500`}></span>
+                                <span className={`absolute ${colors[i]} h-0.5 w-full rounded-xl left-0 bottom-0 origin-left scale-x-0 max-lg:group-focus:scale-x-100 group-hover:scale-x-100  transition-all duration-500`}></span>
                             </a>
 
                         </li>

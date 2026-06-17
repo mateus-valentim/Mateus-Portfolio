@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Html} from "@react-three/drei";
 import { EffectComposer, Bloom} from "@react-three/postprocessing";
 import ProgrammerModel from "./ProgrammerModel.tsx";
+import {useEffect, useState} from "react";
 
 function Loader() {
     return (
@@ -15,8 +16,21 @@ function Loader() {
 
 export default function ModelLoader() {
 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(()=>{
+        const handleResize = () =>{
+            setIsMobile(window.innerWidth < 768);
+        }
+
+        handleResize();
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, [])
     return (
-        <Canvas camera={{ position: [0, -8,-9], fov: 45 }} gl={{ alpha: false }}>
+        <Canvas camera={{ position: isMobile ? [0, -8, -12] : [0, -8, -9], fov: 45 }} gl={{ alpha: false }}>
 
 
             <ambientLight intensity={0.1}/>
