@@ -30,12 +30,12 @@ export default function ModelLoader() {
         return () => window.removeEventListener("resize", handleResize);
     }, [])
     return (
-        <Canvas camera={{ position: isMobile ? [0, -8, -12] : [0, -8, -9], fov: 45 }} gl={{ alpha: false }}>
+        <Canvas camera={{ position: [0, -8, -9], fov: 45 }} gl={{ alpha: false }}>
 
 
             <ambientLight intensity={0.1}/>
             <directionalLight intensity={1} position={[0, 0, 0]} />
-            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} enablePan={false} />
+            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} enableRotate={!isMobile} enablePan={false} />
 
             <Suspense fallback={<Loader />}>
                 <ProgrammerModel/>
