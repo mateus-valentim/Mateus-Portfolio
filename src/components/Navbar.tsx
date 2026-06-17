@@ -43,7 +43,7 @@ export default function Navbar() {
         const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: navRef.current,
-                start: 'top -50',
+                start: 'top -5%',
                 toggleActions: 'play none none reverse'
             }
         });

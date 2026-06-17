@@ -32,7 +32,7 @@ export default function ModelLoader() {
     }, [])
     return (
         <div className="relative w-full h-full">
-            <Canvas className="pointer-events-auto" camera={{ position: [0, -8, -9], fov: 45 }} gl={{ alpha: false }}>
+            <Canvas camera={{ position: [0, -8, -9], fov: 45 }} gl={{ alpha: false }}>
 
 
                 <ambientLight intensity={0.1}/>
